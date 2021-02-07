@@ -1,7 +1,30 @@
-from random import choice as ch 
+import turtle as tt 
+from random import randint as rnd 
+from random import choice as ch
 
-arr = ["Start"] * 50000
-[arr.append("Earth") for k in range(500)]
+t = tt.Turtle()
+tt.tracer(0, 0)
 
+def goto_up(x, y):
+	t.up()
+	t.goto(x, y)
+	t.down()
 
-print(" ".join([ch(arr) for k in range(1245212223)]))
+s = 300
+
+goto_up(-s, -s)
+t.color("Black")
+t.begin_fill()
+t.goto(s, -s)
+t.goto(s, s)
+t.goto(-s, s)
+t.goto(-s, -s)
+t.end_fill()
+
+for k in range(10000):
+	goto_up(rnd(-s, s), rnd(-s, s))
+
+	t.color("Green" if rnd(0, 100) == 12 else "White")
+	t.dot(rnd(2, 4))
+
+tt.mainloop()
